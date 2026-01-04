@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>#{{ post.id }} {{ post.title }}</h1>
+    <div class="actions">
+      <a class="btn" href="/posts/{{ post.id }}/edit">수정</a>
+      <form method="post" action="/posts/{{ post.id }}/delete" style="display:inline">
+        <button class="btn btn-danger" type="submit" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
+      </form>
+    </div>
+  </div>
+
+  <article class="card">
+    <pre class="content">{{ post.content }}</pre>
+  </article>
+
+  <div class="mt">
+    <a href="/posts">← 목록으로</a>
+  </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title or "FastAPI Web" }}</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="/posts">Mini Board</a>
+      <nav class="nav">
+        <a href="/posts">목록</a>
+        <a href="/posts/new" class="btn">글쓰기</a>
+        <a href="/docs" target="_blank" rel="noopener">API Docs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small>FastAPI + Jinja2 템플릿. (아직 DB는 안 붙였습니다)</small>
+    </div>
+  </footer>
+</body>
+</html>

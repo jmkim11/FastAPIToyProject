@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>게시글 목록</h1>
+    <a class="btn" href="/posts/new">새 글</a>
+  </div>
+
+  {% if posts|length == 0 %}
+    <div class="empty">
+      아직 글이 없습니다. 첫 글을 써보세요.
+    </div>
+  {% else %}
+    <ul class="list">
+      {% for p in posts %}
+        <li class="list-item">
+          <a href="/posts/{{ p.id }}">
+            <strong>#{{ p.id }}</strong>
+            <span class="title">{{ p.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% set is_edit = (mode == 'edit') %}
+
+{% block content %}
+  <div class="page-header">
+    <h1>{{ '게시글 수정' if is_edit else '새 게시글 작성' }}</h1>
+  </div>
+
+  <form class="form" method="post" action="{{ '/posts/' ~ post.id ~ '/edit' if is_edit else '/posts/new' }}">
+    <label class="label">
+      제목
+      <input class="input" name="title" type="text" required maxlength="100" value="{{ post.title if is_edit else '' }}" />
+    </label>
+
+    <label class="label">
+      내용
+      <textarea class="textarea" name="content" required maxlength="5000" rows="12">{{ post.content if is_edit else '' }}</textarea>
+    </label>
+
+    <div class="actions">
+      <button class="btn" type="submit">{{ '저장' if is_edit else '등록' }}</button>
+      <a class="btn btn-secondary" href="{{ '/posts/' ~ post.id if is_edit else '/posts' }}">취소</a>
+    </div>
+  </form>
+{% endblock %}
